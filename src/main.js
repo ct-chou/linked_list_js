@@ -10,15 +10,15 @@ function LinkedList() {
     const append = (value) => {
         const newNode = new Node();
         newNode.value = value;
+        // special case: linked list is empty
         let current = headNode;
         if(current.value==null){
             headNode.value = value;
             return headNode;
         }
-        while (current.nextNode) {
-            current = current.nextNode;
-        }
-        current.nextNode = newNode;
+        // base case:
+        let tailNode = tail();
+        tailNode.nextNode = newNode;
         return newNode;
     }
 
@@ -87,29 +87,18 @@ function LinkedList() {
     }
 
     const pop = () => {
-        let current = headNode;
-        console.log('head: ' + current.value);
-        while(current.nextNode.nextNode) {
-            console.log('current value: ' + current.value);
-            current = current.nextNode;
-            console.log('next value: ' + current.value);
-        }
-        let popped = current.nextNode;
-        current.nextNode = null;
+        let pop_minus_1 = at(size()-2); //size returns index + 1
+        let popped = pop_minus_1.nextNode;
+        pop_minus_1.nextNode = null;
         return popped;
     }
 
     const contains = (value) => {
-        let current = headNode;
-
-        while(current.nextNode) {
-            if(current.value == value)
-                return true;
-            current = current.nextNode;
-        }
-        if(current.value == value)
+        let value_index = find(value);
+        if(value_index != null)
             return true;
-        return false;
+        else   
+            return false;
     }
 
     const find = (value) => {
@@ -124,32 +113,24 @@ function LinkedList() {
         }
         if(current.value == value)
             return index;
-        return 'error - value not found, no index';
+        return null;
     }
 
     const insertAt = (value, index) => {
-        let current = headNode;
-        let count = 0;
-
         if(index == 0) {
             return prepend(value);
         }
-
-        while(count < index) {
-            if(current == null)
-                return 'error - index out of range';
-            count++;
-            if(count == index) {
-                const newNode = new Node();
-                newNode.value = value;
-                newNode.nextNode = current.nextNode;
-                current.nextNode = newNode;
-                return newNode;
-            }
-            current = current.nextNode;
+        
+        let node_prior = at(index-1);
+        if(node_prior) {
+            let newNode = new Node();
+            newNode.value = value;
+            newNode.nextNode = node_prior.nextNode;
+            node_prior.nextNode = newNode;
+            return newNode;
         }
-        return 'error - index out of range';
-
+        else 
+            return 'error: index out of bound'
     }
 
     const removeAt = (index) => {
@@ -186,17 +167,21 @@ console.log(list.toString());
 // console.log(list.at(2));
 // console.log(list.toString());
 // console.log(list.pop())
-// console.log(list.toString());
-// console.log(list.contains('squirrel'));
+// // console.log(list.toString());
+// // console.log(list.contains('squirrel'));
 // console.log(list.contains('cat'));
 // console.log(list.contains('dog'));
-// console.log(list.find('dog'));
-// console.log(list.find('cat'));
-// console.log(list.find('squirrel'));
+// console.log(list.contains('squirrel'));
+// // console.log(list.find('dog'));
+// // console.log(list.find('cat'));
+// // console.log(list.find('squirrel'));
+// console.log(list.toString());
 console.log(list.insertAt("Oni", 0));
 console.log(list.toString());
-console.log(list.removeAt(0));
+console.log(list.insertAt("Oni", 4));
 console.log(list.toString());
-console.log(list.removeAt(3));
-console.log(list.toString());
-console.log(list.removeAt(8));
+
+// console.log(list.removeAt(0));
+// console.log(list.removeAt(3));
+// console.log(list.toString());
+// console.log(list.removeAt(8));
