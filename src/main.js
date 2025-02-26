@@ -153,35 +153,37 @@ function LinkedList() {
     return {append, prepend, size, toString, head, tail, at, pop, contains, find, insertAt, removeAt};
 }
 
-const list = LinkedList();
-list.append("dog");
-list.append("cat");
-list.append("parrot");
-list.append("hamster");
-list.append("snake");
-list.append("turtle");
-console.log(list.size());
-console.log(list.toString());
-// console.log(list.head());
-// console.log(list.tail());
-// console.log(list.at(2));
-// console.log(list.toString());
-// console.log(list.pop())
-// // console.log(list.toString());
-// // console.log(list.contains('squirrel'));
-// console.log(list.contains('cat'));
-// console.log(list.contains('dog'));
-// console.log(list.contains('squirrel'));
-// // console.log(list.find('dog'));
-// // console.log(list.find('cat'));
-// // console.log(list.find('squirrel'));
-// console.log(list.toString());
-console.log(list.insertAt("Oni", 0));
-console.log(list.toString());
-console.log(list.insertAt("Oni", 4));
-console.log(list.toString());
+module.exports = { LinkedList };
 
-// console.log(list.removeAt(0));
-// console.log(list.removeAt(3));
+// const list = LinkedList();
+// list.append("dog");
+// list.append("cat");
+// list.append("parrot");
+// list.append("hamster");
+// list.append("snake");
+// list.append("turtle");
+// console.log(list.size());
 // console.log(list.toString());
-// console.log(list.removeAt(8));
+// // console.log(list.head());
+// // console.log(list.tail());
+// // console.log(list.at(2));
+// // console.log(list.toString());
+// // console.log(list.pop())
+// // // console.log(list.toString());
+// // // console.log(list.contains('squirrel'));
+// // console.log(list.contains('cat'));
+// // console.log(list.contains('dog'));
+// // console.log(list.contains('squirrel'));
+// // // console.log(list.find('dog'));
+// // // console.log(list.find('cat'));
+// // // console.log(list.find('squirrel'));
+// // console.log(list.toString());
+// console.log(list.insertAt("Oni", 0));
+// console.log(list.toString());
+// console.log(list.insertAt("Oni", 4));
+// console.log(list.toString());
+
+// // console.log(list.removeAt(0));
+// // console.log(list.removeAt(3));
+// // console.log(list.toString());
+// // console.log(list.removeAt(8));
